@@ -50,5 +50,10 @@ namespace Silas.API.Controllers
             return await Task.FromResult(result);
         }
 
+        public async Task<object> GetPerson(string id)
+        {
+            var get = _person.Get(Guid.Parse(id));
+            return await Task.FromResult(get);
+        }
     }
 }
