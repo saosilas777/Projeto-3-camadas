@@ -50,6 +50,7 @@ namespace Silas.API.Controllers
             return await Task.FromResult(result);
         }
 
+        [HttpPost("GetPerson")]
         public async Task<object> GetPerson(string id)
         {
             var get = _person.Get(Guid.Parse(id));
