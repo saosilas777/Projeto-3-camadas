@@ -44,6 +44,20 @@ namespace Silas.Service.Persons.Services
             return person;
         }
 
+        //metodo pegar por string
+        public PersonDTO getPerson(string id)
+        {
+            var p = PersonList.list.Where(x => x.Id.ToString() == id).FirstOrDefault();
+            var person = new PersonDTO
+            {
+                Id = p.Id,
+                Nome = p.Nome,
+                Telefone = p.Telefone,
+                Nascimento = p.Nascimento
+            };
+            return person;
+        }
+
         public bool Update(PersonDTO person)
         {
             throw new NotImplementedException();
