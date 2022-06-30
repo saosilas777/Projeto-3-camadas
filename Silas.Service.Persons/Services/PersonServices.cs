@@ -43,24 +43,29 @@ namespace Silas.Service.Persons.Services
             };
             return person;
         }
-
-        //metodo pegar por string
-        public PersonDTO getPerson(string id)
+        
+        public List<PersonDTO> PersonListAll()
         {
-            var p = PersonList.list.Where(x => x.Id.ToString() == id).FirstOrDefault();
-            var person = new PersonDTO
+            var p = PersonList.list;
+            var personList = new List<PersonDTO>(); 
+
+            foreach (var person in p)
             {
-                Id = p.Id,
-                Nome = p.Nome,
-                Telefone = p.Telefone,
-                Nascimento = p.Nascimento
-            };
-            return person;
+                personList.Add(new PersonDTO { Id = person.Id, Nome = person.Nome, Nascimento = person.Nascimento, Telefone = person.Telefone });
+            }
+            return personList;
         }
+        
 
         public bool Update(PersonDTO person)
         {
             throw new NotImplementedException();
         }
+
+
+        //TODO
+        //Tirar filtro da API e levar para camada de serviços
+        //Criar novo metodo na camada serviço com base no metodo filterPerson por year, filtrando por nome e outro por fone
+        //criar metodo(em servicos e chamar na api) de deletar um objeto da lista de pessoas.
     }
 }

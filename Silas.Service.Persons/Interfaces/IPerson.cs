@@ -14,5 +14,7 @@ namespace Silas.Service.Persons.Interfaces
         public PersonDTO Get(Guid id);
         public bool Delete(Guid id);
 
+        public List<PersonDTO> PersonListAll();
+
     }
 }

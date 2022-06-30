@@ -19,13 +19,13 @@ namespace Silas.API.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-        private readonly IPerson _person;
+       
 
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger, IPerson person)
         {
             _logger = logger;
-            _person = person;
+           
 
         }
 
@@ -42,20 +42,6 @@ namespace Silas.API.Controllers
             .ToArray();
         }
 
-        [HttpPost("Create")]
-
-        public async Task<object> Create([FromBody] PersonDTO person)
-        {
-            var result = _person.Create(person);
-            return await Task.FromResult(result);
-        }
-
-        //Post não realizado
-        [HttpPost("GetPerson")]
-        public async Task<object> GetPerson(string id)
-        {
-            var get = _person.Get(Guid.Parse(id));
-            return await Task.FromResult(get);
-        }
+        
     }
 }
