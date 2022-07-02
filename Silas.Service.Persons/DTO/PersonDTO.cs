@@ -13,7 +13,7 @@ namespace Silas.Service.Persons.DTO
         public string Telefone { get; set; }
         public DateTime Nascimento { get; set; }
 
-       
 
+       
     }
 }

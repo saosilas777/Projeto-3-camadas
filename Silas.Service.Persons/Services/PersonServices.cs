@@ -27,7 +27,7 @@ namespace Silas.Service.Persons.Services
         }
 
 
-        
+
         public bool Delete(Guid id)
         {
             var p = PersonList.list.Where(x => x.Id == id).FirstOrDefault();
@@ -48,11 +48,11 @@ namespace Silas.Service.Persons.Services
             };
             return person;
         }
-        
+
         public List<PersonDTO> PersonListAll()
         {
             var p = PersonList.list;
-            var personList = new List<PersonDTO>(); 
+            var personList = new List<PersonDTO>();
 
             foreach (var person in p)
             {
@@ -60,14 +60,21 @@ namespace Silas.Service.Persons.Services
             }
             return personList;
         }
-        
 
+        //Metodo não está como imaginava que seria, mas funciona.
         public bool Update(PersonDTO person)
         {
-            throw new NotImplementedException();
+            var p = PersonList.list.Where(x => x.Id == person.Id).FirstOrDefault();
+            { 
+                p.Nome = person.Nome;
+                p.Telefone = person.Telefone;
+                p.Nascimento = person.Nascimento;
+            };
+            return true;
+
         }
 
 
-       
+
     }
 }

@@ -79,5 +79,12 @@ namespace Silas.API.Controllers.Persons
             return await Task.FromResult(persons);
         }
 
+        [HttpPut("UpDate")]
+        public async Task<object> Update([FromBody] PersonDTO person)
+        {
+            var result = _person.Update(person);
+            return await Task.FromResult(result);
+        }
+
     }
 }
