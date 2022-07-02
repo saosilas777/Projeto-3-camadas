@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 
 namespace Silas.API.Controllers
 {
-    [ApiController]
-    [Route("[controller]")]
+    //[ApiController]
+    //[Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
         private static readonly string[] Summaries = new[]
@@ -19,13 +19,13 @@ namespace Silas.API.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
-       
+
 
 
         public WeatherForecastController(ILogger<WeatherForecastController> logger, IPerson person)
         {
             _logger = logger;
-           
+
 
         }
 
@@ -42,6 +42,6 @@ namespace Silas.API.Controllers
             .ToArray();
         }
 
-        
+
     }
 }

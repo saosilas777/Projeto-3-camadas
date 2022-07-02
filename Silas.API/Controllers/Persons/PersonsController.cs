@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Silas.API.Filters;
+using Silas.Service.Persons.Services;
 using Silas.Service.Persons.DTO;
 using Silas.Service.Persons.Interfaces;
 using System;
@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 namespace Silas.API.Controllers.Persons
 {
     [ApiController]
-    [Route("[controller]")]
-    public class PersonsController : Controller
+    [Route("[Controller]")]
+    public class PersonsController : ControllerBase
     {
         private readonly IPerson _person;
         public PersonsController(IPerson person)
@@ -20,31 +20,22 @@ namespace Silas.API.Controllers.Persons
             _person = person;
 
         }
-        public IActionResult Index()
-        {
-            return View();
-        }
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
 
 
 
-        /// <summary>
-        /// Metodo para criar novo usuario
-        /// </summary>
-        /// <param name="person"></param>
-        /// <returns></returns>
+
         [HttpPost("Create")]
-
         public async Task<object> Create([FromBody] PersonDTO person)
         {
             var result = _person.Create(person);
             return await Task.FromResult(result);
         }
 
-        /// <summary>
-        /// Metodo para recuperar usuario
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        
         [HttpGet("GetPerson")]
         public async Task<object> GetPerson(string id)
         {
@@ -52,17 +43,39 @@ namespace Silas.API.Controllers.Persons
             return await Task.FromResult(get);
         }
 
-        [HttpGet("All")]
+        [HttpGet("DeletePerson")]
+        public async Task<object> DeletePerson(string id)
+        {
+            var delete = _person.Delete(Guid.Parse(id));
+            return await Task.FromResult(delete);
+        }
 
+
+        [HttpGet("All")]
         public async Task<object> All()
         {
             var all = _person.PersonListAll();
             return await Task.FromResult(all);
         }
+
         [HttpGet("GetByYear")]
         public async Task<object> GetByYear(string year)
         {
-            var persons = PersonFilters.personFilter( _person.PersonListAll(), year);
+            var persons = PersonFilters.GetByYear(_person.PersonListAll(), year);
+            return await Task.FromResult(persons);
+        }
+
+        [HttpGet("GetByName")]
+        public async Task<object> GetByName(string nome)
+        {
+            var persons = PersonFilters.GetByName(_person.PersonListAll(), nome);
+            return await Task.FromResult(persons);
+        }
+
+        [HttpGet("GetByPhone")]
+        public async Task<object> GetByPhone(string phone)
+        {
+            var persons = PersonFilters.GetByPhone(_person.PersonListAll(), phone);
             return await Task.FromResult(persons);
         }
 

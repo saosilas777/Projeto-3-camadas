@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Silas.Service.Persons.DTO.PersonDTO;
 
 namespace Silas.Service.Persons.Services
 {
@@ -25,9 +26,13 @@ namespace Silas.Service.Persons.Services
             return persons.Id;
         }
 
+
+        
         public bool Delete(Guid id)
         {
-            throw new NotImplementedException();
+            var p = PersonList.list.Where(x => x.Id == id).FirstOrDefault();
+            PersonList.list.Remove(p);
+            return true;
         }
 
         public PersonDTO Get(Guid id)
@@ -63,9 +68,6 @@ namespace Silas.Service.Persons.Services
         }
 
 
-        //TODO
-        //Tirar filtro da API e levar para camada de serviços
-        //Criar novo metodo na camada serviço com base no metodo filterPerson por year, filtrando por nome e outro por fone
-        //criar metodo(em servicos e chamar na api) de deletar um objeto da lista de pessoas.
+       
     }
 }
