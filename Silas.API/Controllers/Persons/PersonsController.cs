@@ -6,7 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.Extensions.Logging;
+using System.Text.RegularExpressions;
 
 namespace Silas.API.Controllers.Persons
 {
@@ -14,28 +15,47 @@ namespace Silas.API.Controllers.Persons
     [Route("[Controller]")]
     public class PersonsController : ControllerBase
     {
+        private readonly ILogger<PersonsController> _logger;
         private readonly IPerson _person;
-        public PersonsController(IPerson person)
+        public PersonsController(ILogger<PersonsController> logger, IPerson person)
         {
             _person = person;
-
+            _logger = logger;
         }
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
 
-
-
-
+        /// <summary>
+        /// Nome Usuario
+        /// </summary>
+        /// <param name="person"></param>
+        /// <returns></returns>
         [HttpPost("Create")]
         public async Task<object> Create([FromBody] PersonDTO person)
         {
-            var result = _person.Create(person);
-            return await Task.FromResult(result);
+            try
+            {
+                _logger.LogDebug("Criando novo usuario");
+
+                var result = _person.Create(person);
+                //var regex = Regex.IsMatch(result.ToString(), "^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$");
+
+                if (!Regex.IsMatch(result.ToString(), "^[{]?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}[}]?$"))
+                    throw new Exception("Não foi possivel cadastrar usuario | Guid inválido");
+
+                _logger.LogInformation("Usuario cadastrado com sucesso");
+                return await Task.FromResult(result);
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e.Message);
+                return e.Message;
+
+            }
+
+
+
         }
 
-        
+
         [HttpGet("GetPerson")]
         public async Task<object> GetPerson(string id)
         {
@@ -43,7 +63,7 @@ namespace Silas.API.Controllers.Persons
             return await Task.FromResult(get);
         }
 
-        [HttpGet("DeletePerson")]
+        [HttpDelete("DeletePerson")]
         public async Task<object> DeletePerson(string id)
         {
             var delete = _person.Delete(Guid.Parse(id));
