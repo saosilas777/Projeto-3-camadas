@@ -24,11 +24,13 @@ namespace Silas.API.Controllers.Persons
         }
 
         /// <summary>
-        /// Nome Usuario
+        /// Create person method
         /// </summary>
         /// <param name="person"></param>
         /// <returns></returns>
+
         [HttpPost("Create")]
+        
         public async Task<object> Create([FromBody] PersonDTO person)
         {
             try
@@ -55,7 +57,11 @@ namespace Silas.API.Controllers.Persons
 
         }
 
-
+        /// <summary>
+        /// Method to get person by Id type Guid
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("GetPerson")]
         public async Task<object> GetPerson(string id)
         {

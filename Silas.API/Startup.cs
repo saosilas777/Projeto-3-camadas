@@ -6,11 +6,13 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.PlatformAbstractions;
 using Microsoft.OpenApi.Models;
 using Silas.Service.Persons.Interfaces;
 using Silas.Service.Persons.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -33,6 +35,17 @@ namespace Silas.API
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Silas.API", Version = "v1" });
+                
+
+                string caminhoAplicacao =
+                    PlatformServices.Default.Application.ApplicationBasePath;
+                string nomeAplicacao =
+                    PlatformServices.Default.Application.ApplicationName;
+                string caminhoXmlDoc =
+                    Path.Combine(caminhoAplicacao, $"{nomeAplicacao}.xml");
+
+                c.IncludeXmlComments(caminhoXmlDoc);
+
             });
 
             services.AddSingleton<IPerson>(x => new PersonServices());

@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Silas.API</name>
+    </assembly>
+    <members>
+        <member name="M:Silas.API.Controllers.Persons.PersonsController.Create(Silas.Service.Persons.DTO.PersonDTO)">
+            <summary>
+            Create person method
+            </summary>
+            <param name="person"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Silas.API.Controllers.Persons.PersonsController.GetPerson(System.String)">
+            <summary>
+            Method to get person by Id type Guid
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
