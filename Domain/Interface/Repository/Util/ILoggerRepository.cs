@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace Domain.Interface.Repository.Util
 {
     public interface ILoggerRepository : IBaseRepository<Logger>

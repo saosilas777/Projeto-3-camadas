@@ -11,9 +11,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silas.Service.Persons", "Si
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Silas.Service.Person.Teste", "Silas.Service.Person.Teste\Silas.Service.Person.Teste.csproj", "{5AF0C1AA-AB9A-4529-A365-0708D910E318}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Silas.Data\Data.csproj", "{72C72521-B11C-4059-ABBD-27B6F4971822}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Silas.Data\Data.csproj", "{72C72521-B11C-4059-ABBD-27B6F4971822}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{2B501854-4506-4B33-AF67-09708342D3AA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{2B501854-4506-4B33-AF67-09708342D3AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository", "Repository\Repository.csproj", "{05649A37-84BA-45FD-874F-8E6E557B89EC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testes", "Testes", "{A44D223A-4483-4077-BE47-55EEC22AB949}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataTeste2", "DataTeste2\DataTeste2.csproj", "{B288FC9B-BC7E-448E-B176-EDC47D9A27AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,9 +51,20 @@ Global
 		{2B501854-4506-4B33-AF67-09708342D3AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B501854-4506-4B33-AF67-09708342D3AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B501854-4506-4B33-AF67-09708342D3AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{05649A37-84BA-45FD-874F-8E6E557B89EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{05649A37-84BA-45FD-874F-8E6E557B89EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{05649A37-84BA-45FD-874F-8E6E557B89EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{05649A37-84BA-45FD-874F-8E6E557B89EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B288FC9B-BC7E-448E-B176-EDC47D9A27AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B288FC9B-BC7E-448E-B176-EDC47D9A27AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B288FC9B-BC7E-448E-B176-EDC47D9A27AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B288FC9B-BC7E-448E-B176-EDC47D9A27AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B288FC9B-BC7E-448E-B176-EDC47D9A27AB} = {A44D223A-4483-4077-BE47-55EEC22AB949}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A008E6ED-023B-4101-AD0C-9274F64B88C4}

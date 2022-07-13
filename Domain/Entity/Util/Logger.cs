@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.Interface.Configurations;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Entity.Util
 {
-    public class Logger
+    public class Logger : Base, IAggregateRoot
     {
-        public Guid ID { get; set; }
         public long EventId { get; set; }
         public DateTime DateTime { get; set; }
         public int Type { get; set; }
