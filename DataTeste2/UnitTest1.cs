@@ -1,3 +1,4 @@
+using Domain.Entity;
 using Domain.Entity.Util;
 using NUnit.Framework;
 using Assert = Xunit.Assert;
@@ -7,20 +8,25 @@ namespace DataTeste2
     public class UnitTest1
     {
         Data.Context.DbSilasContext _db;
+        //Data.Context.DbSilasContext _cliente;
         Repository.Util.LoggerRepository _loggerRepository;
+        //Repository.CLienteRepository _clienteRepository;
 
         public UnitTest1()
         {
             _db = new Data.Context.DbSilasContext();
             _loggerRepository = new Repository.Util.LoggerRepository(_db);
+
+           
         }
 
         //[SetUp]
         //public void SetUp()
         //{
-            
+
         //}
 
+        #region TestesLogger
 
         [Fact]
         public void GetAll()
@@ -40,7 +46,7 @@ namespace DataTeste2
         {
             var result = _loggerRepository.SetLogger(new Logger
             {
-                
+
                 ApplicationOwner = "Silas",
                 DateTime = DateTime.Now,
                 Ambient = "dev",
@@ -58,14 +64,35 @@ namespace DataTeste2
             });
             Assert.True(result.IsCompleted);
         }
+        #endregion
 
-       //TODO
-       // criar entidade na domain
-       // criar novo Dbset no dbsilascontext
-       // criar MAP do dbset
-       // criar respositorio da nova entidade (#repositorio/util/)
-       //nova migration
-       //update
-       //criar novos testes
+      
+
+        //public void Add()
+        //{
+        //    var result = _clienteRepository.Add(new Cliente
+        //    {
+        //        Codigo = 30820,
+        //        RazaoSocial = "HELLWIG MATERIAIS DE CONSTRUCAO LTDA",
+        //        UltimaCompra = DateTime.Parse("2022-02-23"),
+        //        Valor = 821.00,
+        //        Telefone = "53 3221-5615",
+        //        Telefone2 = null,
+        //        Email = "megafixadores@gmail.com",
+        //        Cidade = "Pelotas",
+        //        Bairro = "Centro"
+                    
+        //    });
+        //    Assert.True(result.IsKeySet);
+        //}
+
+        //TODO
+        // criar entidade na domain
+        // criar novo Dbset no dbsilascontext
+        // criar MAP do dbset
+        // criar respositorio da nova entidade (#repositorio/util/)
+        //nova migration
+        //update
+        //criar novos testes
     }
 }

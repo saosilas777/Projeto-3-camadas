@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Silas.Service.Person.Teste\Silas.Service.Person.Teste.csproj" />
     <ProjectReference Include="..\Silas.Service.Persons\Silas.Service.Persons.csproj" />
   </ItemGroup>
 

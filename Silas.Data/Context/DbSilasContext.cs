@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Domain.Interface.UnitOfWork;
 using Domain.Entity.Util;
+using Domain.Entity;
 
 namespace Data.Context
 {
@@ -23,6 +24,7 @@ namespace Data.Context
 
 
         public DbSet<Logger> Logger { get; set; }
+        public DbSet<Cliente> Cliente { get; set; }
 
         public async Task<bool> Commit()
         {
