@@ -17,8 +17,8 @@ namespace Data.Map
             builder.HasKey(x => x.Id);
             builder.Property(x => x.Codigo).IsRequired();
             builder.Property(x => x.RazaoSocial).IsRequired();
-            builder.Property(x => x.UltimaCompra).IsRequired(false);
-            builder.Property(x => x.Valor).IsRequired(false);
+            builder.Property(x => x.UltimaCompra).IsRequired();
+            builder.Property(x => x.Valor).IsRequired();
             builder.Property(x => x.Telefone).IsRequired();
             builder.Property(x => x.Telefone2).IsRequired(false);
             builder.Property(x => x.Email).IsRequired();

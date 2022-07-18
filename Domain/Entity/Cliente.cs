@@ -11,7 +11,7 @@ namespace Domain.Entity
     {
         public int Codigo { get; set; }
         public string RazaoSocial { get; set; }
-        public DateTime UltimaCompra { get; set; }
+        public string UltimaCompra { get; set; }
         public double Valor { get; set; }
         public string Telefone { get; set; }
         public string Telefone2 { get; set; }

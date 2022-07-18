@@ -11,10 +11,12 @@ namespace Repository.UnitOfWork
     internal class UnitOfWork : IUnitOfWork
     {
         DbSilasContext _context;
+        DbSilasContext _clienteContext;
+
         public UnitOfWork(DbSilasContext db)
         {
             _context = db;
-        }
+                    }
         public async Task<bool> Commit() => await _context.Commit();
         
         public async void Dispose() => _context.Dispose();

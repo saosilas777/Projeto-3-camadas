@@ -12,50 +12,44 @@ using System.Threading.Tasks;
 
 namespace Repository
 {
-    internal class CLienteRepository<TEntity> : IClienteRepository<TEntity> where TEntity : IAggregateRoot
+    public class CLienteRepository : BaseRepository<Cliente>, IClienteRepository
     {
         protected DbSilasContext _clienteContext;
 
-        public CLienteRepository(DbSilasContext clienteContext)
+        public CLienteRepository(DbSilasContext clienteContext) : base(clienteContext)
         {
             _clienteContext = clienteContext;
         }
-
-        public IUnitOfWork UnitOfWork => new UnitOfWork.UnitOfWork(_clienteContext);
-
-        public async Task Add(TEntity entity, CancellationToken cancellationToken = default) => await _clienteContext.AddAsync(entity, cancellationToken);
-
-        public async Task AddRange(TEntity entity, CancellationToken cancellationToken = default) => await _clienteContext.AddRangeAsync(entity, cancellationToken);
-
-
-        public void Delete(TEntity entity) => _clienteContext.Remove(entity);
-
-
-        public void Dispose()
+        public async Task Add(Cliente cliente)
         {
-            GC.Collect();
+           _clienteContext.Add(cliente);
+           _clienteContext.SaveChanges();
         }
 
-        public async Task<IQueryable<TData>> GetAll<TData>() where TData : Base
-        {
-            DbSet<TData> _clienteDb = _clienteContext.Set<TData>();
-            return await Task.FromResult(_clienteDb.AsQueryable<TData>());
-        }
 
-        public async Task<TData> GetById<TData>(Guid Id) where TData : Base
-        {
-            DbSet<TData> _clienteDb = _clienteContext.Set<TData>();
-            return await _clienteDb.Where(x => x.Id.Equals(Id)).FirstOrDefaultAsync() ?? throw (new Exception("Nenhuma informação encontrada"));
-        }
-
-        public void Update(TEntity entity)
+        public Task AddRange()
         {
             throw new NotImplementedException();
         }
 
-        public void UpdateRange(HashSet<TEntity> entity, CancellationToken cancellationToken = default)
+        public void Delete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void UpdateRange()
         {
             throw new NotImplementedException();
         }
     }
-}
+
+    
+
+       
+    }
+

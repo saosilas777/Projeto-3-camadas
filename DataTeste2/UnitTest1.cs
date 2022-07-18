@@ -8,15 +8,16 @@ namespace DataTeste2
     public class UnitTest1
     {
         Data.Context.DbSilasContext _db;
-        //Data.Context.DbSilasContext _cliente;
+        Data.Context.DbSilasContext _cliente;
         Repository.Util.LoggerRepository _loggerRepository;
-        //Repository.CLienteRepository _clienteRepository;
+        Repository.CLienteRepository _clienteRepository;
 
         public UnitTest1()
         {
             _db = new Data.Context.DbSilasContext();
             _loggerRepository = new Repository.Util.LoggerRepository(_db);
-
+            _cliente = new Data.Context.DbSilasContext();
+            _clienteRepository = new Repository.CLienteRepository(_cliente);
            
         }
 
@@ -66,25 +67,26 @@ namespace DataTeste2
         }
         #endregion
 
-      
 
-        //public void Add()
-        //{
-        //    var result = _clienteRepository.Add(new Cliente
-        //    {
-        //        Codigo = 30820,
-        //        RazaoSocial = "HELLWIG MATERIAIS DE CONSTRUCAO LTDA",
-        //        UltimaCompra = DateTime.Parse("2022-02-23"),
-        //        Valor = 821.00,
-        //        Telefone = "53 3221-5615",
-        //        Telefone2 = null,
-        //        Email = "megafixadores@gmail.com",
-        //        Cidade = "Pelotas",
-        //        Bairro = "Centro"
-                    
-        //    });
-        //    Assert.True(result.IsKeySet);
-        //}
+        [Fact]
+        public void Add()
+        {
+            var result = _clienteRepository.Add(new Cliente
+            {
+                
+                Codigo = 30820,
+                RazaoSocial = "HELLWIG MATERIAIS DE CONSTRUCAO LTDA",
+                UltimaCompra = "2022-02-23",
+                Valor = 821.00,
+                Telefone = "53 3221-5615",
+                Telefone2 = "",
+                Email = "megafixadores@gmail.com",
+                Cidade = "Pelotas",
+                Bairro = "Centro"
+
+            });
+            Assert.True(result.IsCompleted);
+        }
 
         //TODO
         // criar entidade na domain

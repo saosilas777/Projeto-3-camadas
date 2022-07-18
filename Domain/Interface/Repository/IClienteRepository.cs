@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace Domain.Interface.Repository
 {
-    public interface IClienteRepository<TEntity> : IDisposable where TEntity : IAggregateRoot
+    public interface IClienteRepository : IBaseRepository<Cliente>
     {
         IUnitOfWork UnitOfWork { get; }
-        Task Add(TEntity entity, CancellationToken cancellationToken = default);
-        Task AddRange(TEntity entity, CancellationToken cancellationToken = default);
-        void Update(TEntity entity);
-        void Delete(TEntity entity);
-        void UpdateRange(HashSet<TEntity> entity, CancellationToken cancellationToken = default);
+        Task Add(Cliente cliente);
+        Task AddRange();
+        void Update();
+        void Delete();
+        void UpdateRange();
 
         Task<IQueryable<TData>> GetAll<TData>() where TData : Base;
 
