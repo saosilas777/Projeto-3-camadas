@@ -18,7 +18,7 @@ namespace DataTeste2
             _loggerRepository = new Repository.Util.LoggerRepository(_db);
             _cliente = new Data.Context.DbSilasContext();
             _clienteRepository = new Repository.CLienteRepository(_cliente);
-           
+
         }
 
         //[SetUp]
@@ -73,19 +73,33 @@ namespace DataTeste2
         {
             var result = _clienteRepository.Add(new Cliente
             {
-                
-                Codigo = 30820,
-                RazaoSocial = "HELLWIG MATERIAIS DE CONSTRUCAO LTDA",
-                UltimaCompra = "2022-02-23",
-                Valor = 821.00,
-                Telefone = "53 3221-5615",
-                Telefone2 = "",
-                Email = "megafixadores@gmail.com",
-                Cidade = "Pelotas",
-                Bairro = "Centro"
+
+                Codigo = 12760,
+                RazaoSocial = "Casa de carnes boi gordo",
+                UltimaCompra = "2019-07-19",
+                Valor = 9000.00,
+                Telefone = "12 97564-1235",
+                Telefone2 = "12 3536-4010",
+                Email = "boigordo@gmail.com",
+                Cidade = "Cambui",
+                Bairro = "tulipa"
 
             });
             Assert.True(result.IsCompleted);
+        }
+
+        [Fact]
+        public void GetAllCliente()
+        {
+            var get = _clienteRepository.GetAll();
+            Assert.True(get.Result.Count == 1);
+        }
+
+        [Fact]
+        public void DeleteCliente()
+        {
+            var cliente = _clienteRepository.GetAll().Result.Where(x => x.Codigo == 12760 ).FirstOrDefault();
+            _clienteRepository.Delete(cliente);
         }
 
         //TODO

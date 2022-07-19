@@ -16,10 +16,10 @@ namespace Repository.UnitOfWork
         public UnitOfWork(DbSilasContext db)
         {
             _context = db;
-                    }
+        }
         public async Task<bool> Commit() => await _context.Commit();
-        
+
         public async void Dispose() => _context.Dispose();
-        
+
     }
 }

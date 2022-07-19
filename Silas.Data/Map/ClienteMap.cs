@@ -20,7 +20,7 @@ namespace Data.Map
             builder.Property(x => x.UltimaCompra).IsRequired();
             builder.Property(x => x.Valor).IsRequired();
             builder.Property(x => x.Telefone).IsRequired();
-            builder.Property(x => x.Telefone2).IsRequired(false);
+            builder.Property(x => x.Telefone2).IsRequired();
             builder.Property(x => x.Email).IsRequired();
             builder.Property(x => x.Cidade).IsRequired();
             builder.Property(x => x.Bairro).IsRequired();

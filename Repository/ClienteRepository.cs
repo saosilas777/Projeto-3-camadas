@@ -14,27 +14,32 @@ namespace Repository
 {
     public class CLienteRepository : BaseRepository<Cliente>, IClienteRepository
     {
-        protected DbSilasContext _clienteContext;
-
+        public DbContext _clienteContext;
         public CLienteRepository(DbSilasContext clienteContext) : base(clienteContext)
         {
             _clienteContext = clienteContext;
         }
         public async Task Add(Cliente cliente)
         {
-           _clienteContext.Add(cliente);
-           _clienteContext.SaveChanges();
+            _clienteContext.Add(cliente);
+            _clienteContext.SaveChanges();
         }
 
+        public async Task<HashSet<Cliente>> GetAll()
+        {
+            var x = (from l in _db.Cliente select l).AsEnumerable().ToHashSet();
+            return x;
+        }
 
         public Task AddRange()
         {
             throw new NotImplementedException();
         }
 
-        public void Delete()
+        public void Delete(Cliente cliente)
         {
-            throw new NotImplementedException();
+            _clienteContext.Remove(cliente);
+            _clienteContext.SaveChanges();
         }
 
         public void Update()
@@ -48,8 +53,8 @@ namespace Repository
         }
     }
 
-    
 
-       
-    }
+
+
+}
 

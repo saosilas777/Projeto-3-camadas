@@ -15,7 +15,7 @@ namespace Domain.Interface.Repository
         Task Add(Cliente cliente);
         Task AddRange();
         void Update();
-        void Delete();
+        void Delete(Cliente cliente);
         void UpdateRange();
 
         Task<IQueryable<TData>> GetAll<TData>() where TData : Base;
