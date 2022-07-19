@@ -25,6 +25,8 @@ namespace Data.Context
 
         public DbSet<Logger> Logger { get; set; }
         public DbSet<Cliente> Cliente { get; set; }
+        public DbSet<Users> Users { get; set; }
+
 
         public async Task<bool> Commit()
         {

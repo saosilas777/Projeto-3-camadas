@@ -14,7 +14,7 @@ namespace Repository
 {
     public class CLienteRepository : BaseRepository<Cliente>, IClienteRepository
     {
-        public DbContext _clienteContext;
+        protected DbContext _clienteContext;
         public CLienteRepository(DbSilasContext clienteContext) : base(clienteContext)
         {
             _clienteContext = clienteContext;
