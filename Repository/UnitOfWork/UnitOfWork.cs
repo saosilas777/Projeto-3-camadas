@@ -11,7 +11,7 @@ namespace Repository.UnitOfWork
     internal class UnitOfWork : IUnitOfWork
     {
         DbSilasContext _context;
-        DbSilasContext _clienteContext;
+        
 
         public UnitOfWork(DbSilasContext db)
         {

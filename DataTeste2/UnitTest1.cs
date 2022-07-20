@@ -29,11 +29,12 @@ namespace DataTeste2
 
         #region TestesLogger
 
+        
         [Fact]
         public void GetAll()
         {
             var get = _loggerRepository.GetAll();
-            Assert.True(get.Result.Count == 2);
+            Assert.True(get.IsCompleted);
         }
         [Fact]
         public void GetById()
@@ -68,6 +69,7 @@ namespace DataTeste2
         #endregion
 
 
+        #region ClienteTeste
         [Fact]
         public void Add()
         {
@@ -92,7 +94,7 @@ namespace DataTeste2
         public void GetAllCliente()
         {
             var get = _clienteRepository.GetAll();
-            Assert.True(get.Result.Count == 1);
+            Assert.True(get.IsCompleted) ;
         }
 
         [Fact]
@@ -102,13 +104,8 @@ namespace DataTeste2
             _clienteRepository.Delete(cliente);
         }
 
-        //TODO
-        // criar entidade na domain
-        // criar novo Dbset no dbsilascontext
-        // criar MAP do dbset
-        // criar respositorio da nova entidade (#repositorio/util/)
-        //nova migration
-        //update
-        //criar novos testes
+        #endregion
+
+        
     }
 }
