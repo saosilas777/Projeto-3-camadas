@@ -37,7 +37,8 @@ namespace Data.Context
         {
             if (!optionsBuilder.IsConfigured)
             {
-                string conn = @"Server=DESKTOP-51DGK9C;Database=DbSilas;User Id=sa;Password=102030";
+                //string conn = @"Server=DESKTOP-51DGK9C;Database=DbSilas;User Id=sa;Password=102030";
+                string conn = @"Server=DESKTOP-SPGKM46;Database=DbSilas;User Id=Silas;Password=102030";
                 optionsBuilder.UseSqlServer(conn);
             }
         }

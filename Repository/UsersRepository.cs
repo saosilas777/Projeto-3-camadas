@@ -11,19 +11,22 @@ namespace Repository
 {
     public class UsersRepository : BaseRepository<Users>, IUsersRepository
     {
-        protected DbSilasContext _Users;
+        protected DbSilasContext _users;
         public UsersRepository(DbSilasContext users) : base(users)
         { 
+                _users = users;
         }
 
         public void Delete(Users user)
         {
-            throw new NotImplementedException();
+            _users.Remove(user);
+            _users.SaveChanges();
         }
 
-        public Task<IQueryable<TData>> GetAll<TData>() where TData : Base
+        public async Task<HashSet<Users>> GetAll()
         {
-            throw new NotImplementedException();
+            var x = (from l in _db.Users select l).AsEnumerable().ToHashSet();
+            return x;
         }
 
         public Task<TData> GetById<TData>(Guid Id) where TData : Base
@@ -31,9 +34,10 @@ namespace Repository
             throw new NotImplementedException();
         }
 
-        public Task Insert(Users user)
+        public async Task Insert(Users user)
         {
-            throw new NotImplementedException();
+            _users.Add(user);
+            _users.SaveChanges();
         }
 
         public void Update()
