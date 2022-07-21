@@ -14,9 +14,7 @@ namespace Silas.Service.Persons.Services
     {
         public Guid Create(PersonDTO person)
         {
-            var a = 10;
-            var b = 0;
-            var c = a/b;
+            
 
             var persons = new PersonHelpers
             {

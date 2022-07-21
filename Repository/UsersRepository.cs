@@ -17,11 +17,11 @@ namespace Repository
                 _users = users;
         }
 
-        public void Delete(Users user)
-        {
-            _users.Remove(user);
-            _users.SaveChanges();
-        }
+        //public void Delete(Users user)
+        //{
+        //    _users.Remove(user);
+        //    _users.SaveChanges();
+        //}
 
         public async Task<HashSet<Users>> GetAll()
         {
@@ -32,6 +32,12 @@ namespace Repository
         public Task<TData> GetById<TData>(Guid Id) where TData : Base
         {
             throw new NotImplementedException();
+        }
+        
+        public async Task<Users>? GetByUserName(string userName )
+        {
+            var user = _users.Users.FirstOrDefault(l => l.UserName == userName);
+            return Task.FromResult(user).Result;
         }
 
         public async Task Insert(Users user)

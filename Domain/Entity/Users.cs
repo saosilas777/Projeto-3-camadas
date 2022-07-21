@@ -11,8 +11,8 @@ namespace Domain.Entity
     {
         public string UserName { get; set; }
         public string Password { get; set; }
-        public string Scope { get; set; }
-        public string Role { get; set; }
+        public int Scope { get; set; }
+        public int Role { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime LastModifiedDate { get; set; }
         public bool IsActive { get; set; }

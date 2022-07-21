@@ -25,10 +25,10 @@ namespace DataTeste2
             {
                 UserName = "Silas",
                 Password = "102030",
-                Scope = "master",
-                Role = "Developer",
+                Scope = 1,
+                Role = 1,
                 CreateDate = new DateTime(2022, 07, 20),
-                LastModifiedDate = new DateTime(2022, 07, 20),
+                LastModifiedDate = DateTime.Now,
                 IsActive = true,
 
 
@@ -45,13 +45,13 @@ namespace DataTeste2
 
         }
 
-        [Fact]
-        public void Remove()
-        {
-            var user = _usersRepository.GetAll().Result.Where(x => x.UserName == "Silas").FirstOrDefault();
-            _usersRepository.Delete(user);
+        //[Fact]
+        //public void Remove()
+        //{
+        //    var user = _usersRepository.GetAll().Result.Where(x => x.UserName == "Silas").FirstOrDefault();
+        //    _usersRepository.Delete(user);
 
-        }
+        //}
 
 
     }

@@ -15,8 +15,11 @@ namespace Silas.API.Controllers.Persons
     [Route("[Controller]")]
     public class PersonsController : ControllerBase
     {
-        private readonly ILogger<PersonsController> _logger;
+
+        #region Person
         private readonly IPerson _person;
+        private readonly ILogger<PersonsController> _logger;
+
         public PersonsController(ILogger<PersonsController> logger, IPerson person)
         {
             _person = person;
@@ -52,8 +55,6 @@ namespace Silas.API.Controllers.Persons
                 return e.Message;
 
             }
-
-
 
         }
 
@@ -111,6 +112,7 @@ namespace Silas.API.Controllers.Persons
             var result = _person.Update(person);
             return await Task.FromResult(result);
         }
+        #endregion
 
     }
 }
