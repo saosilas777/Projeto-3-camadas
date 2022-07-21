@@ -33,7 +33,7 @@ namespace Silas.API.Controllers
         //estrutura de dados: criar tabela para acomodar roles(id"como inteiro", descripytion) e scopes(id "como inteiro", descripytion)
         //criar tabelas de roles e scope(admin...)
         //criar camada servicos na api, para criar usuarios e ver se role e scope existe no banco
-        //
+      
 
     }
 }
